@@ -3,7 +3,7 @@ import TodoList from './components/todoList/TodoList';
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <TodoList />
     </div>
   );
