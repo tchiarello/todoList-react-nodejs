@@ -31,7 +31,7 @@ const updateTaskById = async (req, res, next) => {
     const { id } = req.params;
     const { task } = req.body;
 
-    const taskItem = await TasksService.updateTaskById({ id, task });
+    const taskItem = await TasksService.updateTaskById(id, task);
 
     return res.status(200).json(taskItem);
   } catch (error) {
