@@ -26,38 +26,36 @@ const getAllTasks = async (_req, res, next) => {
   }
 };
 
-// const updateTaskById = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const { task } = req.body;
+const updateTaskById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { task } = req.body;
 
-//     const taskItem = await TasksService.updateTaskById(id, {
-//       task,
-//     });
+    const taskItem = await TasksService.updateTaskById({ id, task });
 
-//     return res.status(200).json(taskItem);
-//   } catch (error) {
-//     console.log(error.message);
-//     return next(error);
-//   }
-// };
+    return res.status(200).json(taskItem);
+  } catch (error) {
+    console.log(error.message);
+    return next(error);
+  }
+};
 
-// const deleteTaskById = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
+const deleteTaskById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-//     const taskItem = await TasksService.deleteTaskById(id);
+    const taskItem = await TasksService.deleteTaskById(id);
 
-//     return res.status(200).json(taskItem);
-//   } catch (error) {
-//     console.log(error.message);
-//     return next(error);
-//   }
-// };
+    return res.status(200).json(taskItem);
+  } catch (error) {
+    console.log(error.message);
+    return next(error);
+  }
+};
 
 module.exports = {
   createTask,
   getAllTasks,
-  // updateTaskById,
-  // deleteTaskById,
+  updateTaskById,
+  deleteTaskById,
 };

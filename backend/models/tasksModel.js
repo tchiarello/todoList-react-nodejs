@@ -1,4 +1,4 @@
-// const { ObjectId } = require('mongodb');
+const { ObjectId } = require('mongodb');
 const mongoConnection = require('./mongoConnection');
 
 const createTask = async ({ task }) => {
@@ -17,7 +17,33 @@ const getAllTasks = async () => {
   return tasksCollection;
 };
 
+const getTaskById = async (id) => {
+  const db = await mongoConnection();
+  const task = await db.collection('tasks').findOne({ _id: ObjectId(id) });
+
+  return task;
+};
+
+const updateTaskById = async (id, payload) => {
+  const db = await mongoConnection();
+  const result = await db
+    .collection('tasks')
+    .updateOne({ _id: ObjectId(id) }, { $set: payload });
+
+  return result;
+};
+
+const deleteTaskById = async (id) => {
+  const db = await mongoConnection();
+  const result = await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
+
+  return result;
+};
+
 module.exports = {
   createTask,
   getAllTasks,
+  getTaskById,
+  updateTaskById,
+  deleteTaskById,
 };
