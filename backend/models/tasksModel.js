@@ -28,7 +28,7 @@ const updateTaskById = async (id, payload) => {
   const db = await mongoConnection();
   const result = await db
     .collection('tasks')
-    .updateOne({ _id: ObjectId(id) }, { $set: payload });
+    .updateOne({ _id: ObjectId(id) }, { $set: { task: payload } });
 
   return result;
 };
