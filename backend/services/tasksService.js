@@ -22,21 +22,13 @@ const getAllTasks = async () => {
 };
 
 const updateTaskById = async (id, payload) => {
-  // const { error } = validationSchema.validate(payload);
-  // if (error) throw errorHandler(422, 'invalid_data', error.message);
-
   await TasksModel.updateTaskById(id, payload);
   return { _id: id, ...payload };
 };
 
 const deleteTaskById = async (id) => {
-  // const { error } = idValidation.validate(id);
-  // if (error) throw errorHandler(422, 'Wrong id format');
-  // const task = await TasksModel.getTaskById(id);
-  // if (!task) throw errorHandler(422, 'invalid_data', 'Wrong id format');
-
-  await TasksModel.deleteTaskById(id);
-  return task;
+  const taskItem = await TasksModel.deleteTaskById(id);
+  return taskItem;
 };
 
 module.exports = {
