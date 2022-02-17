@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const MONGO_DB_URL = process.env.DB_URL;
+const MONGO_DB_URL = `mongodb://${'localhost' || 'mongodb'}:27017/todoList`;
 const DB_NAME = 'todoList';
 
 const OPTIONS = {
